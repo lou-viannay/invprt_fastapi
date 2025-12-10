@@ -1,0 +1,14 @@
+Jinja2
+libcommon @ git+ssh://github.com/lou-viannay/libcommon
+paramiko
+pyodbc
+python-dateutil
+python-jose
+python-json-logger
+pytz
+PyYAML
+
+SQLAlchemy>=1.4.0,<2.0.0
+
+fastapi[standard]
+pwdlib[argon2]

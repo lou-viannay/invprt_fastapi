@@ -1,0 +1,71 @@
+
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+    font-size: 11px;
+    color: var(--body-quiet-color);
+}
+
+div.help ul {
+     margin-bottom: 0;
+}
+
+.help-tooltip {
+    cursor: help;
+}
+
+.form-field {
+    margin-top: 5px;
+    /* border: 1px solid green; */
+}
+
+select {
+    height: 30px;
+}
+
+select[multiple] {
+    /* Allow HTML size attribute to override the height in the rule above. */
+    height: auto;
+    min-height: 200px;
+}
+
+.form-control {
+    width: 90%;
+}
+
+.compact input {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.form-group {
+    float: left;
+    width: 33%;
+    padding: 0 3em 0 1.5em;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    margin-left: 1px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.auto-width {
+    width: 100%;
+}
+
+.scrollable {
+    position: relative;
+    max-height: 60vh;
+    width: auto;
+    overflow-y: scroll;
+    overflow-x: clip;
+}
+
+.multiselect-container.dropdown-menu {
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.invisible {
+    display: None;
+}

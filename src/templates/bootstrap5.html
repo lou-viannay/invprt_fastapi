@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en_us">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Page title -->
+    <title>{% block title %}django-bootstrap5 template title{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ STATIC_PREFIX }}/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Bootstrap JavaScript if it is in head -->
+    {% if javascript_in_head %}
+       <script src="{{ STATIC_PREFIX }}/js/bootstrap.js"></script>
+    {% endif %}
+
+    {% block bootstrap5_extra_head %}{% endblock %}
+
+</head>
+
+<body htx-ext="ws">
+{% block bootstrap5_before_content %}{% endblock %}
+{% block bootstrap5_content %} CONTENT {% endblock %}
+{% block bootstrap5_after_content %}{% endblock %}
+
+<!-- Bootstrap JavaScript if it is in body -->
+{% if not javascript_in_head %}
+    <script src="{{ STATIC_PREFIX }}/js/bootstrap.js"></script>
+{% endif %}
+
+{% block bootstrap5_extra_script %}{% endblock %}
+
+</body>
+
+</html>

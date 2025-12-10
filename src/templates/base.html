@@ -1,0 +1,66 @@
+{% extends 'bootstrap5.html' %}
+
+{% block title %}
+BakeMark Shipment API
+{% block subtitle %}
+{% endblock %}
+{% endblock %}
+
+
+{% block bootstrap5_extra_head %}
+    {% block head_extra_meta %}
+    {% endblock %}
+<link href="{{ STATIC_PREFIX }}/css/jquery-ui.min.css" rel="stylesheet">
+<link href="{{ STATIC_PREFIX }}/css/nav-logo.css" rel="stylesheet">
+<link rel="shortcut icon" href="{{ STATIC_PREFIX }}/icons/favicon.ico" />
+  {% block head_extra_css %}
+  {% endblock %}
+  {% block head_extra_js %}
+  {% endblock %}
+{% endblock %}
+
+{% block bootstrap5_extra_script %}
+  <script src="{{ STATIC_PREFIX }}/js/jquery-3.7.1.min.js"></script>
+  <script src="{{ STATIC_PREFIX }}/js/jquery-ui.min.js"></script>
+  <script src="{{ STATIC_PREFIX }}/js/js.cookie.js"></script>
+  <script src="{{ STATIC_PREFIX }}/js/htmx.min.js"></script>
+
+  {% block body_extra_js %}
+  {% endblock %}
+{% endblock %}
+
+{% block bootstrap5_content %}
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="{{ STATIC_PREFIX }}/img/logo-small.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    {% if menu_item %}
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav nav-pills">
+        {% for menu_item in menu %}
+            <a class="{{ menu_item.classes }}" href="{{ menu_item.href }}" {{ menu_item.attrs }}>
+                {{ menu_item.label }}</a>
+        {% endfor %}  
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</nav>
+
+    <div class="container">
+        <div class="container-fluid system-message">
+            {% autoescape off %}
+            {{ bootstrap_messages }}
+            {% endautoescape %}
+        </div>
+
+        {% block content %}
+        (no content)
+        {% endblock %}
+    </div>
+{% endblock %}
+
