@@ -7,7 +7,7 @@ python-jose
 python-json-logger
 pytz
 PyYAML
-pyscopg2-binary
+psycopg2-binary
 
 SQLAlchemy>=1.4.0,<2.0.0
 
