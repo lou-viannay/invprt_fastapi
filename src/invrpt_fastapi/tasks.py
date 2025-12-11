@@ -138,8 +138,8 @@ async def task_sync_branch(dibol_schema: list, ftp_rec: FTPRecord, cfg: dict, co
         for f, data in parse_files(dibol_schema, save_folder):
             processed_count += 1
             # Save parsed data to database
-            # pg.load_headers(data['headers'], branch_no)
-            # pg.load_details(data['details'], branch_no)
+            pg.load_headers(data['headers'], branch_no)
+            pg.load_details(data['details'], branch_no)
 
             # move file to archive and remove extra files if over keep count
             archive_file = archive_folder / archive_name(f)
