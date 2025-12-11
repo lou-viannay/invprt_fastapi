@@ -239,13 +239,26 @@ def valid_branch(conn: DBConnection, branch_no: int) -> Tuple[Optional[FTPRecord
 async def status_sync_branch(
         branch_no: Union[str, int],
 ) -> ResultSyncStatus:
+    save_folder = Path(main_cfg['sync']['save_folder']) / f"branch_{int(branch_no):03}"
+    message_target = save_folder / "msg/last_message.txt"
+    logger.debug(f"last message file: {message_target}")
+    if not message_target.exists():
+        message_present = False
+        msg = ""
+        ts = ""
+    else:
+        message_present = True
+        logger.debug(f"Reading message file: {message_target}")
+        with message_target.open() as f:
+            ts, msg = f.read().strip().split('|')
+
     created, semaphore = await get_keyed_semaphore(str(branch_no))
     if semaphore.locked():
         return ResultSyncStatus(status="Pending", pending=True, completed=False)
-    elif created:
-        return ResultSyncStatus(status="Clear", pending=False,  completed=False)
+    elif message_present:
+        return ResultSyncStatus(status="Done", pending=False, completed=True, message=msg, message_ts=ts)
     else:
-        return ResultSyncStatus(status="Done", pending=False, completed=True)
+        return ResultSyncStatus(status="Clear", pending=False,  completed=False)
 
 
 @app.post("/dibol/sync/{branch_no}", status_code=status.HTTP_202_ACCEPTED)

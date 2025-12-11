@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-                                                         
 #                                                                               
 # author: Lou Viannay <lou.viannay@octavesolution.com>
+import datetime
 from typing import List, Union, Annotated, Optional, Literal
 
 from pydantic import BaseModel
@@ -62,6 +63,8 @@ class ResultSyncStatus(BaseModel):
     status: Literal["Pending", "Clear", "Done"] = "Clear"
     pending: bool = False
     completed: bool = False
+    message: str = ""
+    message_ts: str = ""
 
 
 class CallbackRecord(BaseModel):
